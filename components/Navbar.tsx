@@ -8,26 +8,30 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon,XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/navigation";
-import { Interface } from "readline";
-
-const navigation = [
-  { name: "Home", href: "#", current: true },
-  { name: "Contests", href: "#", current: false },
-  { name: "About", href: "#", current: false },
-];
+import Link from "next/link";
 
 function classNames(...classes: (string | boolean)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-interface props{
-  name:string;
+interface Props {
+  name: string;
+  home?:boolean;
+  contest?:boolean;
+  about?:boolean;
 }
 
-export default function Navbar({name}:props) {
-  const router=useRouter();
+export default function Navbar({ name,home,contest,about }: Props) {
+  const router = useRouter();
+
+  const navigation = [
+    { name: "Home", href: "/home", current: home || false },
+    { name: "Contest", href: "/contest", current: contest || false },
+    { name: "About", href: "/about", current: about || false },
+  ];
+
   return (
     <Disclosure as="nav" className="bg-blue-600">
       {({ open }) => (
@@ -48,36 +52,36 @@ export default function Navbar({name}:props) {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <div className="text-white"> Code-O-Rama</div>
+                  <div className="text-white">Code-O-Rama</div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "text-white bg-blue-500"
-                            : "text-white hover:text-gray-300",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <div
+                          className={classNames(
+                            item.current
+                              ? "text-white bg-blue-500"
+                              : "text-white hover:text-gray-300",
+                            "rounded-md px-3 py-2 text-sm font-medium"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <MenuButton className="relative flex rounded-full text-sm hover:bg-blue-500">
-                        <div className="text-white block rounded-md px-3 py-2 text-base font-medium">{name}</div>
+                      <div className="text-white block rounded-md px-3 py-2 text-base font-medium">
+                        {name}
+                      </div>
                     </MenuButton>
                   </div>
                   <MenuItems
@@ -87,15 +91,16 @@ export default function Navbar({name}:props) {
                     <MenuItem>
                       {({ active }) => (
                         <button
-                          onClick={async()=>{
-                            await fetch('http://localhost:3001/auth/logout', {
-                              method: 'POST',
-                              headers: {'Content-Type': 'application/json'},
-                              credentials: 'include',
-                          })
-                  
-                          router.push('/');
-                  
+                          onClick={async () => {
+                            await fetch("http://localhost:3001/auth/logout", {
+                              method: "POST",
+                              headers: {
+                                "Content-Type": "application/json",
+                              },
+                              credentials: "include",
+                            });
+
+                            router.push("/");
                           }}
                           className={classNames(
                             active ? "bg-gray-100" : "",
@@ -115,20 +120,19 @@ export default function Navbar({name}:props) {
           <DisclosurePanel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
-                <DisclosureButton
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "text-white bg-blue-500"
-                      : "text-white  hover:text-gray-300",
-                    "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </DisclosureButton>
+                <Link key={item.name} href={item.href}>
+                  <DisclosureButton
+                    className={classNames(
+                      item.current
+                        ? "text-white bg-blue-500"
+                        : "text-white  hover:text-gray-300",
+                      "block rounded-md px-3 py-2 text-base font-medium"
+                    )}
+                    aria-current={item.current ? "page" : undefined}
+                  >
+                    {item.name}
+                  </DisclosureButton>
+                </Link>
               ))}
             </div>
           </DisclosurePanel>

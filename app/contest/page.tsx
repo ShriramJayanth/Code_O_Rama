@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 
-export default function Home() {
+export default function Contest() {
     const router=useRouter();
     const [message, setMessage] = useState('');
 
@@ -32,7 +32,7 @@ export default function Home() {
 
     return (
        <div>
-        <Navbar home={true} name={message}/>
+        <Navbar contest={true} name={message}/>
        </div>
     )
 }
