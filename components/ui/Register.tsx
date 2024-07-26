@@ -65,7 +65,7 @@ export default function Register({ toggleLogin }: LoginProps) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start p-24 gap-6 bg-blue-600 text-white">
       <div className="flex items-center justify-center text-[80px]">
-        Code-O-Rama
+       UpsideDown
       </div>
       <Form {...form}>
         <form
