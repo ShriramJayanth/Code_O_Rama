@@ -39,7 +39,7 @@ export default function Contest() {
   const submitCode = async () => {
     setOutput("loading...");
     try {
-      const response = await fetch("http://localhost:3001/code/submit-code", {
+      const response = await fetch("http://localhost:3001/code/python", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

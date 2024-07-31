@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function Dropdown() {
-  const [position, setPosition] = React.useState("Cpp")
+  const [position, setPosition] = React.useState("Python")
 
   return (
     <div>
