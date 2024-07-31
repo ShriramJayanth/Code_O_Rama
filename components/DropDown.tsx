@@ -26,9 +26,7 @@ export function Dropdown() {
         <DropdownMenuLabel>Programming language</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="Cpp">Cpp</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="Python">Python</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="Java">Java</DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

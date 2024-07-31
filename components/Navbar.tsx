@@ -28,8 +28,8 @@ export default function Navbar({ name,home,contest,about }: Props) {
 
   const navigation = [
     { name: "Home", href: "/home", current: home || false },
-    { name: "Contest", href: "/contest", current: contest || false },
-    { name: "About", href: "/about", current: about || false },
+    { name: "Python", href: "/python", current: contest || false },
+    { name: "Terminal", href: "/terminal", current: about || false },
   ];
 
   return (
