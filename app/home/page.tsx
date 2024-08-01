@@ -7,28 +7,28 @@ export default function Home() {
     const router=useRouter();
     const [message, setMessage] = useState('');
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //       try {
-    //         const response = await fetch("http://localhost:3001/auth/user", {
-    //           credentials: "include",
-    //         });
+    useEffect(() => {
+        const fetchUser = async () => {
+          try {
+            const response = await fetch("https://hack4change-backend.onrender.com/auth/user", {
+              credentials: "include",
+            });
     
-    //         if (!response.ok) {
-    //             alert("user not logged in");
-    //           throw new Error("Not authenticated");
-    //         }
+            if (!response.ok) {
+                alert("user not logged in");
+              throw new Error("Not authenticated");
+            }
     
-    //         const content = await response.json();
-    //         setMessage(`Hi ${content.username}`);
-    //       } catch (e) {
-    //         setMessage("not logged in");
-    //         router.push("/");
-    //       }
-    //     };
+            const content = await response.json();
+            setMessage(`Hi ${content.username}`);
+          } catch (e) {
+            setMessage("not logged in");
+            router.push("/");
+          }
+        };
     
-    //     fetchUser();
-    //   },[]);
+        fetchUser();
+      },[]);
 
     return (
        <div>
