@@ -45,7 +45,7 @@ export default function Register({ toggleLogin }: LoginProps) {
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const res = await fetch("http://localhost:3001/auth/register", {
+      const res = await fetch("https://hack4change-backend.onrender.com/auth/register", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(values),

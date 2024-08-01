@@ -13,7 +13,7 @@ interface CourseData {
   id: string;
   title: string;
   description: string;
-  image: StaticImageData;
+  image: any;
 }
 
 const Course = () => {
