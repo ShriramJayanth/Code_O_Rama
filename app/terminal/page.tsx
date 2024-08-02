@@ -13,7 +13,7 @@ export default function About() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("https://hack4change-backend.onrender.com/auth/user", {
+        const response = await fetch("http://localhost:3001/auth/user", {
           credentials: "include",
         });
 
@@ -44,7 +44,7 @@ export default function About() {
       e.preventDefault();
 
       try {
-        const response = await fetch("https://hack4change-backend.onrender.com/code/bash", {
+        const response = await fetch("http://localhost:3001/code/bash", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

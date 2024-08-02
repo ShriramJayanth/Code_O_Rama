@@ -10,7 +10,7 @@ export default function Home() {
     useEffect(() => {
         const fetchUser = async () => {
           try {
-            const response = await fetch("https://hack4change-backend.onrender.com/auth/user", {
+            const response = await fetch("http://localhost:3001/auth/user", {
               credentials: "include",
             });
     

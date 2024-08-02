@@ -16,7 +16,7 @@ export default function Contest() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch("https://hack4change-backend.onrender.com/auth/user", {
+        const response = await fetch("http://localhost:3001/auth/user", {
           credentials: "include",
         });
 
@@ -39,7 +39,7 @@ export default function Contest() {
   const submitCode = async () => {
     setOutput("loading...");
     try {
-      const response = await fetch("https://hack4change-backend.onrender.com/code/python", {
+      const response = await fetch("http://localhost:3001/code/python", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
